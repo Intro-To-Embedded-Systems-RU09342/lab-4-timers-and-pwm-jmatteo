@@ -1,15 +1,11 @@
 # Hardware PWM
-Now that you have done the software version of PWM, it is time to start leveraging other features of these Timer Modules.
+Using the timer modules integrated into the MSP430 microcontrollers, outputs can be set with PWM functions using software or hardware. This example uses hardware to control the PWM outputs, specifically the led on pin 1.0 on each board used. Pressing the activation button changes the PWM for the output from 0% to 100% in incriments of 10% and starting at 50%. When the button is pressed and the PWM is at 100%, it resets the PWM back to 0%.
 
-## Task
-Replicate the same behavior as in the software PWM, but by using the Timer Modules ability to directly output to a GPIO Pin instead of managing them in software. One way to think about this is: unless there are other functions running in your code, your system should initialize, set the Timer Modules, and then turn off the CPU.
+There is also debouncing code added in which, using the timers, prevents accidental bouncing of the button as to not input multiple presses of the button from a single press.
 
-## Deliverables
-You will need to have two folders in this repository, one for each of the processors that you used for this part of the lab. Remember to replace this README with your own.
+## BOARDS
+MSP430G2553
+	On this board, the button P1.3 is pressed in order to change the brightness of LED P1.6. LED P1.0 is toggled when button P1.3 is pressed to indicate the button is being pressed.
 
-### Hints
-Read up on the P1SEL registers as well as look at the Timer modules ability to multiplex.
-
-## Extra Work
-### Using ACLK
-Some of these microprocessors have a built in ACLK which is extremely slow compared to the up to 25MHz available on some of them. What is the overall impact on the system when using this clock? Can you actually use your PWM code with a clock that slow?
+MSP430FR6989
+	On this board, the button P1.1 is pressed in order to change the brightness of LED P1.0. LED P9.7 lights up when button P1.1 is pressed to indicate the button is being pressed.
